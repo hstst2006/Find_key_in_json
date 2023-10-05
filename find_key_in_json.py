@@ -14,7 +14,7 @@ def check_file_type(filename):
     else:
         return False
 
-# Recursively find all keys in the object
+# Recursively search through all keys in the object
 def dig_for_key(json_object, key_to_find):
     for key in json_object.keys():
         if str(key) == str(key_to_find):
