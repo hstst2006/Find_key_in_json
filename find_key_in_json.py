@@ -45,10 +45,14 @@ def main():
         exit(1)
     else:
         # Loop through stdin for filenames
-        print("Pipe filenames to this script like so echo <filename> <filename2> <...> | ./find_key_in_json.py <key>.\nIf no filenames were supplied, type them manually here:")
+        print("Pipe filenames to this script like so echo <filename> <filename2> <...> | ./find_key_in_json.py <key>.\nIf no filenames were supplied, type them manually here:\n>", end =" ")
         for filename in sys.stdin:
             filename = filename.strip()
-            keys_found = process_file(filename, args.keys)
+            keys_found = []
+            if check_file_type(filename):
+                keys_found = process_file(filename, args.keys)
+            else:
+                print(f"{filename} is not .json!")
 
         # Print the filename, number of keys found and the list of keys found
             if len(keys_found) > 0:
