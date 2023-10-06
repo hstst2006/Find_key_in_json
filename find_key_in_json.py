@@ -20,7 +20,7 @@ def dig_for_key(json_object, key_to_find):
         if str(key) == str(key_to_find):
             return True
         if isinstance(json_object[key], dict):
-            return dig_for_key(json_object[key], key_to_find)
+           dig_for_key(json_object[key], key_to_find)
 
 # Open file and gather list of matching keys
 def process_file(filename, keys):
@@ -29,12 +29,12 @@ def process_file(filename, keys):
     keys_found = []
     # Look for keys
     for key in keys:
-        if dig_for_key(json_object, key):
+        if dig_for_key(json_object, key) != None:
             keys_found.append(key)
     return keys_found
 
 def main():
-    
+
     parser = init_parser()
     args = parser.parse_args()
 
